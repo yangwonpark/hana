@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<!-- testDAO 객체가 참조하는 설정이다 -->	
+<!-- mapper가 interface인 경우, 패키지부터 인터페이스 이름까지 FullName으로 작성하자 (alias가 작동하지 않는다) -->	
+<mapper namespace="com.itbank.member.MemberDAO">
+	
+	<!-- jdbcTemplate에서 rowMapper 에 해당하는 컬럼데이터를 객체 멤버필드에 대입하는 과정이 없다 -->
+	
+	<!-- mybatis-config.xml 에서 typeAliases를 선언해서 줄여서 쓰기가 가능함 -->
+	<!-- #{} 는 PreparedStatement에서의 ? 와 같은 역할 (값을 맵핑하며, 자료형에 따라 처리함) -->
+	<select id="selectMember" parameterType="member" resultType="member">
+		select * from member where 
+			userid = #{userid} and
+			userpw = #{userpw}
+	</select>
+	
+	
+	
+	<select id="selectId" parameterType="string" resultType="string">
+		select userid from member where userid=#{userId}
+	</select>
+	
+	<select id="selectPnum" parameterType="string" resultType="string">
+		select pnum from member where pnum=#{userPnum}      	
+	</select>
+	
+	<insert id="insertMember" parameterType="member">
+		insert into member
+			(idx, userid, userpw, userkind, name, pnum, mnum, birth_date, join_date, gender, foreign, expiry_date, agree_sms, agree_email, agree_post, agree_pnum)
+		values (
+			member_seq.nextval, #{userid}, #{userpw}, #{userkind}, #{name}, #{pnum}, mileage_seq.nextval, #{birth_date}, sysdate, #{gender}, #{foreign}, #{expiry_date}, #{agree_sms}, #{agree_email}, #{agree_post}, #{agree_pnum}		
+		) 
+	</insert>
+	
+	<update id="updateMember" parameterType="member">
+		update member set  
+			pnum = #{pnum},  birth_date = #{birth_date}, gender = #{gender}, foreign = #{foreign}, expiry_date = #{expiry_date}, agree_sms = #{agree_sms}, agree_pnum = #{agree_pnum}, agree_email = #{agree_email}, agree_post = #{agree_post}
+		where userid = #{userid}
+	</update>
+	
+	<select id="updateUserMember" parameterType="string" resultType="member">
+		select * from member where userid = #{userid}
+	</select>	
+	
+</mapper>
+
+
+
+
+

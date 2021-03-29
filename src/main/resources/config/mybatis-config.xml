@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC 
+		"-//mybatis.org//DTD Config 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="useGeneratedKeys" value="false" />
+		<setting name="mapUnderscoreToCamelCase" value="false" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.itbank.member.MemberDTO" alias="member" />
+		<typeAlias type="com.itbank.local.LocalDTO" alias="local" />
+		<typeAlias type="com.itbank.metro.MetroDTO" alias="metro" />
+		<typeAlias type="com.itbank.company.CompanyDTO" alias="company" />
+		<typeAlias type="com.itbank.reason.ReasonDTO" alias="reason" />
+	</typeAliases>
+</configuration>
