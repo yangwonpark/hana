@@ -92,6 +92,4 @@ public class EntrepreneurDTO {
 	public void setConfirm_time(Date confirm_time) {
 		this.confirm_time = confirm_time;
 	}
-
-
 }

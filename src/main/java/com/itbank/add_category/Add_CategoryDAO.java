@@ -7,3 +7,4 @@ public interface Add_CategoryDAO {
 	List<Add_CategoryDTO> getAdd_CategoryList();
 
 }
+

@@ -1,7 +1,6 @@
 package com.itbank.con_category;
 
 public class Con_CategoryDTO {
-
 	private int idx;
 	private String name, img_path;
 	

@@ -114,6 +114,4 @@ public class HotelDTO {
 	public void setAdd_facility(String add_facility) {
 		this.add_facility = add_facility;
 	}
-	
-
 }

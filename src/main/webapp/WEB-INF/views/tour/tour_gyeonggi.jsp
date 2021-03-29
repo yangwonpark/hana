@@ -56,16 +56,6 @@
     font-weight: 700;
     color: #666;
 }
-.filter-title {
-	position: relative;
-    padding: 24px 0 26px;
-    font-size: 20px;
-    border-bottom: 1px solid #999;
-}
-.el-menu {
-    border-right: 0;
-    border-bottom: 1px solid #999;
-}
 </style>
 
 <div class="tour_wrap">
@@ -93,58 +83,57 @@
 				</ul>
 			</div>
 		</div>
-		<div style="height: 800px; display: flex;">
-			<div style="width: 300px; height: 800px; background-color: yellow;">
-				<div class="app-category">
-					<div class="filter-title">
-						<p>CATEGORY</p>
-					</div>
-					<div>
-						<ul role="menubar" class="el-menu">
-							<li role="menuitem" data-title="전체">
-								<div style="padding-left:20px; color:; background-color:;">
-									전체
-								</div>
-							</li>
-						</ul>
-						<ul role="menubar" class="el-menu">
-							<li role="menuitem" data-title="투어&액티비티">
-								<div style="padding-left:20px; color:; background-color:;">
-									투어&액티비티
-								</div>
-							</li>
-						</ul>
-						<ul role="menubar" class="el-menu">
-							<li role="menuitem" data-title="입장권&교통패스">
-								<div style="padding-left:20px; color:; background-color:;">
-									입장권&교통패스
-								</div>
-							</li>
-						</ul>
-						<ul role="menubar" class="el-menu">
-							<li role="menuitem" data-title="편의서비스">
-								<div style="padding-left:20px; color:; background-color:;">
-									편의서비스
-								</div>
-							</li>
-						</ul>
-						<ul role="menubar" class="el-menu">
-							<li role="menuitem" data-title="살아보기">
-								<div style="padding-left:20px; color:; background-color:;">
-									살아보기
-								</div>
-							</li>
-						</ul>
-						<ul role="menubar" class="el-menu">
-							<li role="menuitem" data-title="농어촌체험">
-								<div style="padding-left:20px; color:; background-color:;">
-									농어촌체험
-								</div>
-							</li>
-						</ul>
+		<div style="height: 1200px; display: flex;">
+		<div style="width: 300px; height: 1100px;">
+			<div style="width: 250px; height: 25px; margin-left: 20px">
+				<h3>CATEGORY</h3>
+			</div>
+			<hr>
+			<div style="width:300px; height: 800px;" id="hotel_filter" >
+				<div style="width: 250px; margin-left: 20px;">
+					<h3><a href="#" id="tour_gyeonggi_filter_0">전체</a></h3>
+					<div style="width: 250px; height: 120px; background-color: #F2F2F2; display: none;"
+							id="tour_gyeonggi_filter_0_in">
 					</div>
 				</div>
+				<hr>	
+				<div style="width: 250px; margin-left: 20px;">
+					<h3><a href="#" id="tour_gyeonggi_filter_1">투어&액티비티</a></h3>
+					<div style="width: 250px; height: 120px; background-color: #F2F2F2; display: none;"
+							id="tour_gyeonggi_filter_1_in">
+					</div>
+				</div>
+				<hr>
+				<div style="width: 250px; margin-left: 20px">
+					<h3><a href="#" id="tour_gyeonggi_filter_2" >입장권&교통패스</a></h3>
+					<div style="width: 250px; height: 120px; background-color: #F2F2F2; display: none;"
+							id="tour_gyeonggi_filter_2_in">
+					</div>
+				</div>
+				<hr>
+				<div style="width: 250px; margin-left: 20px">
+					<h3><a href="#" id="tour_gyeonggi_filter_3" >편의서비스</a></h3>
+					<div style="width: 250px; height: 120px; background-color: #F2F2F2; display: none;"
+							id="tour_gyeonggi_filter_3_in">
+					</div>
+				</div>
+				<hr>
+				<div style="width: 250px; margin-left: 20px">
+					<h3><a href="#" id="tour_gyeonggi_filter_4" >살아보기</a></h3>
+					<div style="width: 250px; height: 120px; background-color: #F2F2F2; display: none;"
+							id="tour_gyeonggi_filter_4_in">
+					</div>
+				</div>
+				<hr>
+				<div style="width: 250px; margin-left: 20px">
+					<h3><a href="#" id="tour_gyeonggi_filter_5" >농어촌체험</a></h3>
+					<div style="width: 250px; height: 120px; background-color: #F2F2F2; display: none;"
+							id="tour_gyeonggi_filter_5_in">
+					</div>
+				</div>
+				<hr>
 			</div>
+		</div>
 			<div style="width: 900px; height: 800px; background-color: yellowgreen; overflow-y: scroll;"></div>
 		</div>
 	</div>
