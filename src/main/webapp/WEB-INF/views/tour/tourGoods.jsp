@@ -129,19 +129,19 @@
 	    opacity: 1;
 	    position: absolute;
 	    bottom: 0;
-	    right: -20px;
+	    left: 730px;
 	    width: 340px;
 	    margin-left: 150px;
 	    height: 70px;
-	    background-color: #f06c5e;
 	    overflow: hidden;
 	    float: right;
 	    transition: opacity .3s;
     }
-    .btn-reservation {
+    #btn-reservation {
 	    width: 100%;
 	    height: 70px;
-	    line-height: 70px;
+	    line-height: 20px;
+	    background-color: #f06c5e;
 	    text-align: center;
 	}
 	.detail-wrap {
@@ -236,30 +236,83 @@
 	    font-size: 14px;
 	    border-radius: 7px;
 	}
+	button {
+            all: unset;
+            background-color: black;
+            color: white;
+            padding: 5px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12pt;
+        }
+	.modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal_overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        .modal_content {
+            background-color: white;
+            padding: 50px 100px;
+            text-align: center;
+            position: relative;
+            border-radius: 10px;
+            min-width: 400px;
+            width: 50%;
+            max-width: 500px;
+            z-index: 20;
+        }
+    .hidden {
+        display: none;
+    }
 </style>
+
+<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+		crossorigin="anonymous">
 
 <div class="contents">
 	<div class="product-top" style="height: 800px; display: flex;">
-		<div class="visual-flex" style="width: 900px; height: 800px; background-color: yellow;">
+		<div class="visual-flex" style="width: 900px; height: 800px;">
 			<div class="pic">
-			
+				<img style="margin-right: 20px; width: 280px; height: 210px" src="${cpath }${dto.head_img}">
+				<!-- <img src="${cpath }/resources/tourimg/tour1.jpg" style="width:100%; height: 1000px;">  -->
 			</div>
 		</div>
-		<div class="infoFlex" style="width: 650px; height: 100%; background-color: yellowgreen;">
+		<div class="infoFlex" style="width: 650px; height: 100%; background-color: #eaeaea;">
 			<div class="productInfoWrap">
 				<div class="product-info">
 					<div class="product-title">
-						<p class="local">${dto.local_idx}</p>
+						<p class="local">${local.name}</p>
 						<h1 class="name">${dto.name}</h1>
 						<div class="price-wrap">
-							<span class="price">${dto.price }</span>
-							<div class="usable">2021년 3월 ${dto.usable + 5 }일 부터 사용가능</div>
+							<span class="price">${tour_price.price }</span>
+							<div class="usable">${dto.usable}일 후 부터 사용가능</div>
 						</div>
 					</div>
 					<div class="coupon-area">
 						<button class="btn-download">
 							<b>할인쿠폰 확인하기</b>
 						</button>
+					<!--  <div class="modal hidden"></div>
+						<div class="modal_overlay"></div>
+						<div class="model_content">
+							다운로드 가능한 쿠폰이 없습니다.<br>
+							'새로운 쿠폰' 페이지에서 더 많은 쿠폰을 다운로드 하세요<br>
+							<button id="cancel">취소</button>
+							<button id="ok">확인</button>
+						</div>	-->
 					</div>
 				</div>
 				<div class="product-info-detail">
@@ -270,12 +323,12 @@
 						<div class="rate-wrap">
 							<div class="avg"></div>
 							<div class="order">
-								<span>${dto.sold_cnt }</span>
-								<span>${dto.view_cnt }</span>
+								<span>구매 : ${dto.sold_cnt }</span>
+								<span>조회 : ${dto.view_cnt }</span>
 							</div>
 						</div>
 						<div class="features">
-							<ul>
+							<!-- <ul>
 								<li>
 									<span>협력사 자체 취소규정</span>
 								</li>
@@ -291,23 +344,13 @@
 								<li>
 									<span>이바우처 (모바일 바로사용)</span>
 								</li>
-							</ul>
+							</ul>  -->
 						</div>
 					<div class="notice">
 						<div class="read">
 							<div class="title"><h2>꼭 읽어보세요!</h2></div>
 								<div class="dot-list">
-									<p>
-										추억과 낭만이 있는 강촌!
-										<br>
-										서정적이면서 톡톡 튀는 분위기를 연출하는 김유정역 북월 광장
-										<br>
-										각기각색의 테마가 있는 터널과 아름다운 북한강 절경을 즐길 수 있는 국내 최대 규모의 레일바이크 코스를 만나보세요.
-										<br>
-										<span style="background-color:#7ED2FF">
-										<b>지정된 날짜 외에는 사용이 불가하며, 강촌레일파크 예약번호가 기재된 하나투어 바우처를 현장 티켓 오피스에서 실물 티켓으로 교환해야합니다.</b>
-										</span>
-									</p>
+									
 								</div>
 							</div>
 						</div>
@@ -325,8 +368,8 @@
 							<p class="local">${dto.local_idx }</p>
 							<h1 class="name">${dto.name }</h1>
 							<div class="price-wrap">
-								<span class="price">${dto.price }</span>
-								<div class="usable">2021년 3월 ${dto.usable + 5 }일 부터 사용가능</div>
+								<span class="price">${tour_price.price }</span>
+								<div class="usable">${dto.usable}일 부터 사용가능</div>
 							</div>
 						</div>
 					</div>
@@ -347,16 +390,16 @@
 			<div>
 				<div class="amount">
 					<strong>총 결제 금액</strong>
-					<p>${dto.price }원</p>
+					<p>${tour_price.price }원</p>
 				</div>
 				<div class="btn-order-group">
 					<div class="inner">
-						<button class="btn-cart"><h2>바로 예약하기</h2></button>
+						<button class="btn-cart"><h2>바로 결제하기</h2></button>
 					</div>
 				</div>
 			</div>
 			</section>		
-			<div class="product-detail-wrap" style="position: relative; width: 835px; margin-left: 350px;">
+			<div class="product-detail-wrap" style="position: relative; width: 1000px; margin-left: 350px;">
 				<div class="product-detail-menu-wrap">
 					<div class="product-detail-menu">
 						<div class="menus">
@@ -364,9 +407,20 @@
 								<span>상품타입 *</span>
 								<span>상품정보 *</span>
 								<span>상품문의 *</span>
-								<span>리뷰 0</span>
+								<span>리뷰</span>
 							</div>
-							
+							<div class="menus-right">
+								<button id="btn-reservation">						
+									<h3>예약하기</h3>
+								</button>
+								<div class="modal hidden">
+									<div class="modal_overlay"></div>
+									<div class="model_content">
+										<h2>상품을 선택하세요</h2>
+										<button id="close">닫기</button>
+									</div>	
+								</div>								
+							</div>
 						</div>
 					</div>
 				</div>
@@ -376,7 +430,7 @@
 								<section class="section-typeinfo">
 									<h2 class="section-title">상품타입</h2>
 									<div class="useday">
-										<input type="text" class="flactpickr-input" data-input="input" placeholder="사용일" readonly="readonly">
+										<input autocomplete="off" type="text" name="from" id="from" style="margin-left: 10px">
 									</div>	
 									<button type="button" class="searchBtn" style="margin: 20px;">
 										검색하기
@@ -390,7 +444,8 @@
 							<section class="content">
 								<h2>기본정보</h2>
 								<div>${dto.content }</div>
-								<div>${dto.head_img }</div>
+								<div></div><img style="margin-right: 20px; width: 280px; height: 210px" src="${cpath }${dto.head_img}"></div>
+								<!-- <div><img src="${cpath }/resources/tourimg/tour1.jpg" style="width:80%"></div>  -->
 							</section>
 							<section class="how_to">
 								<h2>사용방법</h2>
@@ -410,7 +465,7 @@
 						<div class="left-content">
 							<section>
 								<h2>판매자 정보</h2>
-								<div>${dto.entrepreneur_idx }</div>
+								<div>${tour_entrepreneur.brand_name }</div>
 							</section>
 						</div>
 					</div>
@@ -420,7 +475,7 @@
 								<div class="list-header">
 									<div class="inner">
 										<h2>상품문의</h2>
-										<div>${dto.notice }</div>
+										<div>${tour_qa.notice }</div>
 									</div>
 								</div>
 							</div>
@@ -431,4 +486,21 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	const openBtn = document.getElementById('btn-reservation');
+	const modal = document.querySelector('.modal');
+	const closeBtn = document.getElementById('close');
+	const overlay = document.querySelector('.modal_overlay');
+	
+	openBtn.onclick = function() {
+	    modal.classList.remove('hidden');
+	}
+	closeBtn.onclick = function() {
+	    modal.classList.add('hidden');
+	}
+	overlay.onclick = function() {
+	    modal.classList.add('hidden');
+	}
+</script>
 <%@ include file="../layout/footer.jsp" %>

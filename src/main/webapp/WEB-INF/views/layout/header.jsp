@@ -1,21 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="cpath">${pageContext.request.contextPath }</c:set>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>우리 조 프로젝트</title>
 <link rel="stylesheet" href="${cpath }/css/style.css">
+<link rel="stylesheet" href="${cpath }/css/tour.css">
 <script src="https://kit.fontawesome.com/e4a70f325d.js" crossorigin="anonymous"></script>
 <script src="${cpath }/resources/js/js.js"></script>
+<%-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script> --%>
 <script
         src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous">
 </script>
-
 
 <!-- 날짜 선택 -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -161,16 +163,16 @@
 											</div>
 										</li>
 										<li style="margin-left: 10px;"class="depth1">
-											<a href="#">투어 / 입장권</a>
+											<a href="${cpath}/tour/tourView">투어 / 입장권</a>
 											<div class="dc">
 												<ul class="depth2">
-													<li><a href="${cpath}/tour/tour_jeju">제주</a></li>
-													<li><a href="${cpath}/tour/tour_seoul">서울</a></li>
-													<li><a href="${cpath}/tour/tour_gyeonggi">경기</a></li>
-													<li><a href="${cpath}/tour/tour_gyeongsang">경상</a></li>
-													<li><a href="${cpath}/tour/tour_gangwon">강원</a></li>
-													<li><a href="${cpath}/tour/tour_jeolla">전라</a></li>
-													<li><a href="${cpath}/tour/tour_chungcheong">충청</a></li>
+													<li><a href="${cpath}/tour/tour_jeju/1">제주</a></li>
+													<li><a href="${cpath}/tour/tour_seoul/1">서울</a></li>
+													<li><a href="${cpath}/tour/tour_gyeonggi/1">경기</a></li>
+													<li><a href="${cpath}/tour/tour_gyeongsang/1">경상</a></li>
+													<li><a href="${cpath}/tour/tour_gangwon/1">강원</a></li>
+													<li><a href="${cpath}/tour/tour_jeolla/1">전라</a></li>
+													<li><a href="${cpath}/tour/tour_chungcheong/1">충청</a></li>
 												</ul>
 											</div>
 										</li>

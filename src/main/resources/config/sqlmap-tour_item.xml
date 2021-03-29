@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.itbank.tour_item.Tour_ItemDAO">
+
+ 	<select id="selectCount" resultType="int" parameterType="hashmap">
+		select count(*) from 
+			(select tour_item.*, member.userid
+				from tour_item, member <!-- , package_detail, hotel_info, room_info, tour_option, local, entrepreneur, coupon -->
+				where tour_item.member_idx = member.idx
+				<!-- and tour_item.package_detail_idx = package_detail.idx
+					and tour_item.hotel_info_idx = hotel_info.idx
+					and tour_item.room_info_idx = room_info.idx
+					and tour_item.tour_option_idx = tour_option.idx
+					and tour_item.local_idx = local.idx
+					and tour_item.entrepreneur_idx = entrepreneur.idx 
+					and tour_item.coupon_idx = coupon.idx -->	
+					
+					<if test="type != null">
+						<if test="type == 'idx'">
+							and tour_item.idx = #{word}
+						</if>
+						<if test="type != 'idx'">
+							and ${type} like '%${word}%'
+						</if> 
+					</if>
+					
+				order by tour_item.idx desc)
+	</select>
+	
+	<select id="selectList" resultType="tour_item" parameterType="hashmap">
+	
+		select * from
+		    (select rownum as st, A.* from
+				(select tour_item.*, member.userid from tour_item, member <!-- , package_detail, 
+									hotel_info, room_info, tour_option, local, entrepreneur, coupon -->
+					where tour_item.member_idx = member.idx
+					<!--  and tour_item.package_detail_idx = package_detail.idx
+						and tour_item.hotel_info_idx = hotel_info.idx
+						and tour_item.room_info_idx = room_info.idx
+						and tour_item.tour_option_idx = tour_option.idx
+						and tour_item.local_idx = local.idx
+						and tour_item.entrepreneur_idx = entrepreneur.idx
+						and tour_item.coupon_idx = coupon.idx -->	
+						
+						<if test="type != null">
+							<if test="type == 'idx'">
+								and tour_item.idx = #{word}
+							</if>
+							<if test="type != 'idx'">
+								and ${type} like '%${word}%'
+							</if> 
+						</if>
+			<!-- 
+				값으로 취급하려면 #{ }
+				글자자체로 처리하려면 ${ }
+			-->		
+						
+		<![CDATA[
+					order by tour_item.idx desc)
+			A where rownum <= #{last})
+		where st >= #{first}
+		
+		]]>
+		
+	</select>
+		
+	<select id="selectOne" resultType="tour_item" parameterType="int">
+		select tour_item.*, member.userid
+		from tour_item, member <!-- , package_detail, hotel_info, room_info, tour_option, local, entrepreneur, coupon  -->
+		where tour_item.member_idx = member.idx
+		<!-- and tour_item.package_detail_idx = package_detail.idx
+			and tour_item.hotel_info_idx = hotel_info.idx
+			and tour_item.room_info_idx = room_info.idx
+			and tour_item.tour_option_idx = tour_option.idx
+			and tour_item.local_idx = local.idx
+			and tour_item.entrepreneur_idx = entrepreneur.idx
+			and tour_item.coupon_idx = coupon.idx -->	
+			and tour_item.idx = #{idx}
+	</select>
+	
+	<insert id="inputTour_Item" parameterType="tour_item">
+		insert into tour_item(idx, hotel_info_idx, room_info_idx, member_idx, name, package_detail_idx, tour_option_idx, local_idx, entrepreneur_idx,
+		 content, con_img, how_to, matter, refund_rule, head_img, coupon_yn, coupon_idx, usable, hashtag) values
+		 (tour_item_seq.nextval, null, null, 58, #{name}, 118, 1, 74, 36, #{content}, #{con_img}, #{how_to}, #{matter}, #{refund_rule}, 
+		  #{head_img}, #{coupon_yn}, null, #{usable}, #{hashtag})	
+	</insert>
+	
+	<select id="selectMaxIdx" resultType="int">
+		select max(idx) from tour_item
+	</select> 
+	
+</mapper>
