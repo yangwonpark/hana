@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.itbank.hotel.HotelDAO">
+	<select id="getHotelList" resultType="hotel">
+		select * from hotel_info
+	</select>
+	<select id="getHotel" resultType="hotel">
+		select * from hotel_info where idx=#{hotel_idx}
+	</select>
+	<select id="getHotelKind" parameterType="int" resultType="String">
+		select name from hotel_kind where idx=#{hotel_kind_idx}
+	</select>
+	
+</mapper>

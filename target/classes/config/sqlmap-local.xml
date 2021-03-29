@@ -4,7 +4,7 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 		
 <mapper namespace="com.itbank.local.LocalDAO">
-	<select resultType="local" id="LocalList">
-		select * from local 
+	<select id="getLocalList" resultType="local">
+		select * from local
 	</select>
 </mapper>

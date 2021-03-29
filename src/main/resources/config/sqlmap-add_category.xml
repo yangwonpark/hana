@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.itbank.add_category.Add_CategoryDAO">
+	<select id="getAdd_CategoryList" resultType="add_category">
+		select * from add_category
+	</select>
+</mapper>
+
+
