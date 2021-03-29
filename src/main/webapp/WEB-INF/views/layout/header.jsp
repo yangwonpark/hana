@@ -152,14 +152,6 @@
 												</ul>
 											</div>
 										</li>
-										<li class="depth1">
-											<a href="#">항공</a>
-											<div class="dc">
-												<ul class="depth2">
-													<li><a href="#">항공 예약</a></li>
-												</ul>
-											</div>
-										</li>
 										<li style="margin-left: 10px;"class="depth1">
 											<a href="#">투어 / 입장권</a>
 											<div class="dc">

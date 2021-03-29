@@ -10,7 +10,7 @@ public class Add_CategoryDTO {
 	}
 	public void setIdx(int idx) {
 		this.idx = idx;
-	}
+	}			
 	public String getName() {
 		return name;
 	}
@@ -23,6 +23,4 @@ public class Add_CategoryDTO {
 	public void setImg_path(String img_path) {
 		this.img_path = img_path;
 	}
-	
-	
 }
