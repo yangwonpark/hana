@@ -11,11 +11,8 @@
 	<select id="getHotel" resultType="hotel">
 		select * from hotel_info where idx=#{hotel_idx}
 	</select>
-<<<<<<< HEAD
 	<select id="getHotelKind" parameterType="int" resultType="String">
 		select name from hotel_kind where idx=#{hotel_kind_idx}
 	</select>
-=======
->>>>>>> db831d5536711414efcce63f08558d052880dfe1
 	
 </mapper>

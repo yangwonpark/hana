@@ -10,7 +10,6 @@
 	</settings>
 
 	<typeAliases>
-<<<<<<< HEAD
 		<typeAlias type="com.itbank.member.MemberDTO" alias="member" />
 		<typeAlias type="com.itbank.local.LocalDTO" alias="local" />
 		<typeAlias type="com.itbank.metro.MetroDTO" alias="metro" />
@@ -20,18 +19,9 @@
 		<typeAlias type="com.itbank.add_category.Add_CategoryDTO" alias="add_category" />
 		<typeAlias type="com.itbank.con_category.Con_CategoryDTO" alias="con_category" />
 		<typeAlias type="com.itbank.entrepreneur.EntrepreneurDTO" alias="entrepreneur" />
-=======
-		<typeAlias alias="member" type="com.itbank.member.MemberDTO"/>
-		<typeAlias alias="local" type="com.itbank.local.LocalDTO"/>
-		<typeAlias alias="metro" type="com.itbank.metro.MetroDTO"/>
-		<typeAlias alias="hotel" type="com.itbank.hotel.HotelDTO" />
-		<typeAlias alias="company" type="com.itbank.company.CompanyDTO"/>
-		<typeAlias alias="add_category" type="com.itbank.add_category.Add_CategoryDTO"/>
-		<typeAlias alias="con_category" type="com.itbank.con_category.Con_CategoryDTO"/>
-		<typeAlias alias="tour_price" type="com.itbank.tour_price.Tour_PriceDTO"/>
-		<typeAlias alias="tour_item" type="com.itbank.tour_item.Tour_ItemDTO"/>
-		<typeAlias alias="entrepreneur" type="com.itbank.entrepreneur.EntrepreneurDTO" />
-		<typeAlias alias="reason" type="com.itbank.reason.ReasonDTO" />
->>>>>>> db831d5536711414efcce63f08558d052880dfe1
+		
+		<typeAlias type="com.itbank.tour_price.Tour_PriceDTO" alias="tour_price"/>
+		<typeAlias type="com.itbank.tour_item.Tour_ItemDTO" alias="tour_item"/>
+		<typeAlias type="com.itbank.entrepreneur.EntrepreneurDTO"  alias="entrepreneur"/>
 	</typeAliases>
 </configuration>

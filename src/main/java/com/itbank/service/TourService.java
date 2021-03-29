@@ -84,10 +84,7 @@ public class TourService {
 	}
 	
 	private final String uploadPath = "C:\\upload\\tour";
-
-	public List<LocalDTO> getLocalList() {
-		List<LocalDTO> localList = localDAO.getLocalList();
-		return localList;
+	
 	public int uploadFile(MultipartFile head_img, MultipartFile con_img) throws IllegalStateException, IOException {
 		
 		File f1 = new File(uploadPath, head_img.getOriginalFilename());
