@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <style>
 	.hotel_slider {
 	    height:600px;
@@ -80,36 +81,6 @@
 		crossorigin="anonymous">
 <div class="hotel_wrap">
 	<div class="hotel_visual_wrap">
-		
-		<!-- 이미지 슬라이드 -->
-		<div class="hotel_slider">
-			<div class="slides">
-				<div class="active"
-					style="background-image: url(${cpath}/resources/img/hotel1.jpg);"></div>
-				<div
-					style="background-image: url(${cpath}/resources/img/hotel2.jpg);"></div>
-				<div
-					style="background-image: url(${cpath}/resources/img/hotel3.jpg);"></div>
-				<div
-					style="background-image: url(${cpath}/resources/img/hotel4.jpg);"></div>
-			</div>
-			<div class="page-btns">
-				<div class="active"></div>
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
-			<div class="side-btns">
-				<div>
-					<span><i class="fas fa-angle-left"></i></span>
-				</div>
-				<div>
-					<span><i class="fas fa-angle-right"></i></span>
-				</div>
-			</div>
-		</div>
-		<!-- 이미지 슬라이드 end -->		
-		
 		<!-- 여행지 / 날짜 / 인원  => 숙소검색 -->
 		<form method="POST" class="hotel_search">
 			<!-- 지역선택 -->
@@ -159,24 +130,115 @@
 			<div><input type="submit" value="숙소 검색"></div>
 		</form>
 		<!-- 여행지 / 날짜 / 인원  => 숙소검색 end -->
-	
-	
 		<!-- 슬라이드 속 메뉴바 -->
-		<div class="hotel_visual_list">
-			
+		<div style="position: absolute; z-index: 2; margin-right: -600px; right: 50%;
+			background-color: white; opacity: 0.5; width: 300px; height: 600px;">
 		</div>
 		<!-- 슬라이드 속 메뉴바 end -->
+		<!-- 이미지 슬라이드 -->
+		<div class="hotel_slider">
+			<div class="slides">
+				<div class="active"
+					style="background-image: url(${cpath}/resources/img/hotel1.jpg);"></div>
+				<div
+					style="background-image: url(${cpath}/resources/img/hotel2.jpg);"></div>
+				<div
+					style="background-image: url(${cpath}/resources/img/hotel3.jpg);"></div>
+				<div
+					style="background-image: url(${cpath}/resources/img/hotel4.jpg);"></div>
+			</div>
+			<div class="page-btns">
+				<div class="active"></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div class="side-btns">
+				<div>
+					<span><i class="fas fa-angle-left"></i></span>
+				</div>
+				<div>
+					<span><i class="fas fa-angle-right"></i></span>
+				</div>
+			</div>
+		</div>
+		<!-- 이미지 슬라이드 end -->		
 		
 	</div>
 	<!-- hotel_visual_wrap end -->
 
 	<!-- 숙소정보view -->
 	<div class="hotel_wrap_in">
-		<section><h1>고객님을 위한 추천 숙소</h1></section>
-		<section><h1>믿고 예약하는 이달의 혜택 호텔</h1></section>
-		<section><h1>국내 최고의 프리미엄 호텔</h1></section>
-		<section></section>
-		<section></section>
+		<section>
+			<h1 style="font-family: Lucida Bright;">믿고 예약하는 이달의 혜택 호텔</h1>
+			<div style="width: 1200px; height: 400px; display: flex;">
+				<c:forEach var="i" begin="1" end="4">
+					<div style="width: 300px; height: 400px; padding-left: 10px; padding-top: 20px;">
+						<c:forEach var="entrepreneur" items="${entrepreneurAll }">
+							<c:if test="${entrepreneur.idx eq hotelList[i].entrepreneur_idx }">
+								<form action="hotelSelectOne" method="POST">
+									<input type="hidden" name="entrepreneur_idx" value="${entrepreneur.idx}">
+									<input type="hidden" name="hotel_idx" value="${hotelList[i].idx }">
+									<input type="submit" value="" 
+												style="width: 280px; height: 230px; 
+												background-size: 280px 230px;
+												background-image: url('${cpath}${hotelList[i].main_img }');">
+									<h4 style="font-family: Lucida Bright; color: #679FFA; font-size: 11pt;">
+									 	${entrepreneur.sales_loc.split(" ")[0] }
+									 	${entrepreneur.sales_loc.split(" ")[1] }
+									</h4>
+									<h3 style="font-family: Lucida Bright;">
+										${entrepreneur.shop_name }
+									</h3>
+								</form>
+							</c:if>
+						</c:forEach>
+					</div>
+				</c:forEach>
+			</div>
+		</section>
+		
+		<section style="width: 1200px; height: 600px;">
+			<h1 style="font-family: Lucida Bright;">고객님을 위한 추천 숙소</h1>
+			<ul style="display: flex; list-style: none; width: 1200px; height: 50px; overflow: hidden; padding-left: 0;">
+				<li id="hotel_best_1" 
+						style=" height: 52px; line-height: 52px; width: 300px; font-family: Lucida Bright;
+						border-width: 1px 0 0 1px; border-color: #ddd; border-style: solid;background-color: #fff;
+						text-align:center;">
+					<a href="#">서울/강남</a>
+				</li>
+				<li id="hotel_best_2"
+						style="height: 52px; line-height: 52px; width: 300px; font-family: Lucida Bright;
+						border-width: 1px 0 0 1px; border-color: #ddd; border-style: solid;background-color: #fff;
+						text-align:center;">
+					<a href="#">서울/종로</a>
+				</li>
+				<li id="hotel_best_3"
+						style="height: 52px; line-height: 52px; width: 300px; font-family: Lucida Bright;
+						border-width: 1px 0 0 1px; border-color: #ddd; border-style: solid;background-color: #fff;
+						text-align:center;">
+					<a href="#">서울/동대문</a>
+				</li>
+				<li id="hotel_best_4"
+						style="height: 52px; line-height: 52px; width: 300px; font-family: Lucida Bright;
+						border-width: 1px 1px 0 1px; border-color: #ddd; border-style: solid;background-color: #fff;
+						text-align:center;">
+					<a href="#">서울/마포구</a>
+				</li>
+			</ul>
+			<div id="hotelBest_1" style="width: 1200px; height: 400px; background-color: #f2f2f2; position: absolute;">
+				<c:forEach var="entrepreneur" items="${entrepreneurAll}">
+				</c:forEach>
+			</div>
+			<div id="hotelBest_2" style="width: 1200px; height: 400px; background-color: #f2f2f2; position: absolute;">
+			</div>
+			<div id="hotelBest_3" style="width: 1200px; height: 400px; background-color: #f2f2f2; position: absolute;">
+			</div>
+			<div id="hotelBest_4" style="width: 1200px; height: 400px; background-color: #f2f2f2; position: absolute;">
+			</div>
+			
+		</section>
+		<section><a href="#"><img src="${cpath }/resources/img/hotel5.jpg"></a></section>
 	</div>
 </div>
 
@@ -191,31 +253,33 @@
 	document.getElementById('to').value = tomorrow.toISOString().substring(0, 10);
 	
 	$(function() {
-		var dates = $("#from, #to ").datepicker({
-			prevText : '이전 달',
-			nextText : '다음 달',
-			monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월',
-					'7월', '8월', '9월', '10월', '11월', '12월' ],
-			monthNamesShort : [ '1월', '2월', '3월', '4월', '5월',
-					'6월', '7월', '8월', '9월', '10월', '11월', '12월' ],
-			dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
-			dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
-			dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
-			dateFormat : 'yy-mm-dd',
-			showMonthAfterYear : true,
-			yearSuffix : '년',
-			maxDate : '+30d',
-			onSelect : function(selectedDate) {
-				var option = this.id == "from" ? "minDate" : "maxDate", 
-						instance = $(this).data("datepicker"), 
-						date = $.datepicker.parseDate(
-								instance.settings.dateFormat || $.datepicker._defaults.dateFormat,
-								selectedDate, instance.settings);
-				dates.not(this).datepicker("option", option, date);
-			}
-		});
-	});
-	
+        //시작일.
+        $('#from').datepicker({
+            dateFormat: "yy-mm-dd",             // 날짜의 형식
+            minDate: 0,                      	// 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+            maxDate: 30,
+            onClose: function( selectedDate ) {    
+            	let date = new Date(selectedDate);
+            	date.setDate(date.getDate() + 1);
+            	// 시작일(from) datepicker가 닫힐때
+                // 종료일(to)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일 다음날로 지정
+                $("#to").datepicker( "option","minDate", date.toISOString().substring(0, 10));
+            }                
+        });
+
+        //종료일
+        $('#to').datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate: 0,
+            maxDate: 30,
+            onClose: function( selectedDate ) {
+                // 종료일(to) datepicker가 닫힐때
+                // 시작일(from)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
+                $("#from").datepicker( "option", "maxDate", selectedDate);
+            }                
+        });
+    });
+
 	/* 이미지 슬라이드 */
 	// 기존 버튼형 슬라이더
 	$('.hotel_slider > .page-btns > div').click(function(){
@@ -290,12 +354,9 @@
 
 		if(resultDiv != null){
 			target = event.target.value;
-			console.log(target);
 			resultDiv.style.display='inline';
 			$('.hotel_local > div').click(function (event) {
 				event.preventDefault();
-				console.log(idx);
-				console.log(target);
 				$('#h_address').val(target + ' ' + event.target.value);
 				$(".hotel_location").hide();
 			})

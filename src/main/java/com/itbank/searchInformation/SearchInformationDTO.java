@@ -43,4 +43,7 @@ public class SearchInformationDTO {
 	public void setKids(String kids) {
 		this.kids = kids;
 	}
+	
+	
+	
 }

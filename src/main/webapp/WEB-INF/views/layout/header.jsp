@@ -147,7 +147,7 @@
 											<a href="${cpath}/hotel/hotelView">호텔 / 펜션</a>
 											<div class="dc">
 												<ul class="depth2">
-													<li><a href="#">호텔 예약</a></li>
+													<li><a href="${cpath }/hotel/hotelView">호텔 예약</a></li>
 													<li><a href="#" style="width: 150px">펜션 / 풀빌라 예약</a></li>
 												</ul>
 											</div>

@@ -15,5 +15,9 @@
 		<typeAlias type="com.itbank.metro.MetroDTO" alias="metro" />
 		<typeAlias type="com.itbank.company.CompanyDTO" alias="company" />
 		<typeAlias type="com.itbank.reason.ReasonDTO" alias="reason" />
+		<typeAlias type="com.itbank.hotel.HotelDTO" alias="hotel" />
+		<typeAlias type="com.itbank.add_category.Add_CategoryDTO" alias="add_category" />
+		<typeAlias type="com.itbank.con_category.Con_CategoryDTO" alias="con_category" />
+		<typeAlias type="com.itbank.entrepreneur.EntrepreneurDTO" alias="entrepreneur" />
 	</typeAliases>
 </configuration>

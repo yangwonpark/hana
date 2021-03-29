@@ -25,7 +25,7 @@ public class TourService {
 	}
 
 	public List<LocalDTO> getLocalList() {
-		List<LocalDTO> localList = localDAO.LocalList();
+		List<LocalDTO> localList = localDAO.getLocalList();
 		return localList;
 	}
 

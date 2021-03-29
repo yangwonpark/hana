@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.itbank.entrepreneur.EntrepreneurDAO">
+	<select id="getEntrepreneurAll" resultType="entrepreneur">
+		select * from entrepreneur
+	</select>
+	<select id="getEntrepreneurList" resultType="entrepreneur" parameterType="hashmap">
+		select * from entrepreneur where sales_loc like '${metro}%' and sales_loc like '%${local}%'
+	</select>
+	<select id="getEntrepreneur" resultType="entrepreneur" parameterType="int">
+		select * from entrepreneur where idx=#{entrepreneur_idx}
+	</select>
+</mapper>
+	
